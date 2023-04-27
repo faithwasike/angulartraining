@@ -1,0 +1,66 @@
+<div class="container">
+  <h3>Data Binding</h3>
+
+  <div class="example">
+    <h3>1. String interpolation</h3>
+    <p>{{ companyName }}</p>
+  </div>
+
+  <div class="example">
+    <h3>2. Event Binding</h3>
+    <button class="btn btn-secondary btn-sm" (click)="doSomething()">Click me, and check your console!</button>
+    <button class="btn btn-secondary btn-sm" (click)="getEventDetails($event)">Click me & get my value!</button>
+  </div>
+
+  <div class="example">
+    <h3>3. Property Binding</h3>
+    <input type="text" value="This is some text">
+    <input type="text" [value]="inputFieldValue" style="width: fit-content">
+  </div>
+
+  <div class="example">
+    <h3>4. Attribute Binding</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Heading 1</th>
+        <th>Heading 2</th>
+        <th>Heading 3</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td [colSpan]="columnSpan">Body 1, 2, & 3</td>
+      </tr>
+      <tr>
+        <td colspan="2">Body 4 & 5</td>
+        <td>body 6</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="example">
+    <h3>5. Class Binding</h3>
+    <div class="red-box"></div>
+    <div [class]="className"></div>
+    <button class="btn btn-primary btn-sm" (click)="paintMe('blue-box')">Make me blue!</button>
+    <button class="btn btn-danger btn-sm" (click)="paintMe('red-box')">Make me red!</button>
+  </div>
+
+  <div class="example">
+    <h3>6. Style Binding</h3>
+    <p style="background: orange">This work is for practice</p>
+    <p [style.background-color]="backgroundColor">This background is painted with style binding</p>
+  </div>
+
+  <div class="example">
+    <h1>TWO-WAY BINDING</h1>
+    <h3>7. NG-MODEL</h3>
+    <p>Type in something in the input box below, and see some magic!</p>
+    <input type="text" [(ngModel)]="userInput">
+    <h6>{{ userInput }}</h6>
+
+  </div>
+
+</div>
