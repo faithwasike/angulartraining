@@ -7,17 +7,21 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import {FormsModule} from "@angular/forms";
+import { TodoComponent } from './todo/todo.component';
+import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DataBindingComponent
+    DataBindingComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
