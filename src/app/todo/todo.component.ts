@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TodoService} from "../todo.service";
+import {TodoService} from "../services/todo.service";
 import {Todo} from "../models/todo";
-import {Observable, of} from "rxjs";
+import {map, Observable, of} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-todo',
@@ -13,17 +14,33 @@ export class TodoComponent implements OnInit, OnDestroy {
   public todos: Todo[] = [];
   public todos$: Observable<Todo[]> = of([]);
 
-  constructor(private todoService: TodoService) {
+  public latestTodo: Todo = {
+    id: 2,
+    userId: 2,
+    title: 'Parent To Child',
+    completed: true
+  }
+
+  constructor(
+    private todoService: TodoService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
-    /*this.todoService.fetchAllTodos()
+    this.todoService.fetchAllTodos()
       .subscribe(res => {
-        this.todos = res
-        console.log(`List of todos`, res);
-      });*/
+        this.todos = res;
 
-    this.todos$ = this.todoService.fetchAllTodos();
+        const todo = this.todos.find((todo) => todo.title === 'laboriosam mollitia et enim quasi adipisci quia provident illum');
+        // @ts-ignore
+        this.latestTodo = todo;
+        console.log(`List of todos`, res);
+      });
+
+    // this.todos$ = this.todoService.fetchAllTodos().pipe(
+    //   map(todos => todos.filter(todo => todo.userId === 10))
+    // );
   }
 
   deleteTodo(todo: Todo) {
@@ -36,5 +53,27 @@ export class TodoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
+  }
+
+  viewTodo(todo: Todo) {
+    this.router.navigate([`todo/${todo.id}`], {
+      queryParams: {
+        userId: todo.userId,
+        completed: todo.completed
+      }
+    })
+  }
+
+  addTodo(newTodoTitle: string) {
+    const newTodoObj = {
+      id: 201,
+      userId: 10,
+      title: newTodoTitle,
+      completed: false
+    }
+    console.log('new todo', newTodoObj)
+    // this.todos.push(newTodoObj);
+    this.todos.unshift(newTodoObj);
+    console.log('New Todos', this.todos);
   }
 }

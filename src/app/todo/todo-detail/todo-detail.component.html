@@ -1,0 +1,15 @@
+<p>TODO DETAIL</p>
+<ng-container *ngIf="todo$ | async as myTodo">
+  <table>
+    <tr>
+      <th>Todo ID</th>
+      <th>Title</th>
+      <th>Completed</th>
+    </tr>
+    <tr>
+      <td>{{ myTodo.id }}</td>
+      <td>{{ myTodo.title }}</td>
+      <td>{{ myTodo.completed }}</td>
+    </tr>
+  </table>
+</ng-container>

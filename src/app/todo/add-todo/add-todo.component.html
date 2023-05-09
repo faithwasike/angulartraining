@@ -1,0 +1,8 @@
+<h3>Child's Component</h3>
+<p>Today's Todo: <strong>{{todo.title}}</strong></p>
+
+<div class="form-group">
+  <label for="todo-input">Add a Todo</label>
+  <input type="text" id="todo-input" #newTodo>
+  <button class="btn btn-primary" (click)="addNewTodo(newTodo.value)">Add Todo</button>
+</div>
