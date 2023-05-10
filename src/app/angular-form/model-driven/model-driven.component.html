@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h4>Reactive Form</h4>
+    </div>
+    <div class="col-sm-6">
+      <button type="button" routerLink="/form/reactive" class="btn btn-success pull-right">Go To Template Driven Form</button>
+    </div>
+  </div>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input formControlName="lastName" name="lastName" type="text" class="form-control" id="lastName" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth</label>
+      <!--      <input-->
+      <!--        [(ngModel)]="user.dob"-->
+      <!--        name="dob"-->
+      <!--        class="form-control"-->
+      <!--        id="dob"-->
+      <!--        placeholder="DOB"-->
+      <!--        type="date"-->
+      <!--      >-->
+      <div class="ui-fluid">
+        <p-calendar
+          [dataType]="'string'"
+          [monthNavigator]="true"
+          [showIcon]="true"
+          [style]="{ width: '100%' }"
+          [yearNavigator]='true'
+          yearRange="1050:2023"
+          dateFormat="dd-mm-yy"
+          formControlName="dob"
+          id="dob"
+          [readonlyInput]='true'
+          [showButtonBar]='true'
+          placeholder="Date of Birth"
+        ></p-calendar>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Submit</button>
+  </form>
+
+</div>
