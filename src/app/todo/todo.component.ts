@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TodoService} from "../services/todo.service";
 import {Todo} from "../models/todo";
-import {map, Observable, of} from "rxjs";
-import {Router} from "@angular/router";
+import {Observable, of} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-todo',
@@ -23,12 +23,17 @@ export class TodoComponent implements OnInit, OnDestroy {
 
   constructor(
     private todoService: TodoService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
-    this.todoService.fetchAllTodos()
+   this.activatedRoute.data.subscribe((data) =>{
+      console.log('route data ', this.activatedRoute)
+      this.todos = data['todos']
+    })
+/*  this.todoService.fetchAllTodos()
       .subscribe(res => {
         this.todos = res;
 
@@ -36,7 +41,8 @@ export class TodoComponent implements OnInit, OnDestroy {
         // @ts-ignore
         this.latestTodo = todo;
         console.log(`List of todos`, res);
-      });
+      });*/
+
 
     // this.todos$ = this.todoService.fetchAllTodos().pipe(
     //   map(todos => todos.filter(todo => todo.userId === 10))

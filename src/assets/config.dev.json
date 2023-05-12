@@ -1,0 +1,4 @@
+{
+  "version": "1.0.0",
+  "apiEndpointBaseUrl":"https://jsonplaceholder.typicode.com/todos"
+}

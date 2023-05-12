@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {TodoComponent} from "./todo.component";
 import {TodoDetailComponent} from "./todo-detail/todo-detail.component";
 import {AddTodoComponent} from "./add-todo/add-todo.component";
+import {TodoResolverService} from "../services/todo-resolver-service";
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
       {
         path: '',
         component: TodoComponent
+        , resolve : {todos: TodoResolverService}
       },
       {
         path: 'todo/:id',
